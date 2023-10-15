@@ -2,6 +2,8 @@ package use_case.clear_users;
 
 // TODO Complete me
 
+import java.util.ArrayList;
+
 public class ClearInteractor implements ClearInputBoundary {
 
     final ClearUserDataAccessInterface clearDataAccessObject;
@@ -18,6 +20,9 @@ public class ClearInteractor implements ClearInputBoundary {
 
     @Override
     public void execute(ClearInputData clearInputData) {
-
+        ArrayList<String> clearedUsers = clearDataAccessObject.getClearedUsers();
+        clearDataAccessObject.clearUsers();
+        ClearOutputData clearOutputData = new ClearOutputData(clearedUsers);
+        clearPresenter.prepareSuccessView(clearOutputData);
     }
 }
