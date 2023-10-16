@@ -21,7 +21,7 @@ public class ClearPresenter implements ClearOutputBoundary {
     @Override
     public void prepareSuccessView(ClearOutputData users) {
         ClearState clearState = clearViewModel.getState();
-        clearState.setClearedUsers(users);
+        clearState.setClearedUsers(users.getUsers());
         clearViewModel.firePropertyChanged();
     }
 
