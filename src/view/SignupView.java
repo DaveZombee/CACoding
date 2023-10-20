@@ -91,8 +91,6 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         if (e.getSource().equals(clear)) {
-                            ClearState currentState = clearViewModel.getState();
-
                             clearController.execute();
 
                         }
@@ -185,9 +183,14 @@ public class SignupView extends JPanel implements ActionListener, PropertyChange
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        SignupState state = (SignupState) evt.getNewValue();
-        if (state.getUsernameError() != null) {
-            JOptionPane.showMessageDialog(this, state.getUsernameError());
+        if (evt.getNewValue() instanceof SignupState) {
+            SignupState state = (SignupState) evt.getNewValue();
+            if (state.getUsernameError() != null) {
+                JOptionPane.showMessageDialog(this, state.getUsernameError());
+            }
+        } else { // event is from ClearPresenter, so it's a ClearState
+            ClearState state = (ClearState) evt.getNewValue();
+            JOptionPane.showMessageDialog(this, state.getClearedUsers());
         }
     }
 }
