@@ -21,6 +21,7 @@ public class ClearState {
         String newUsers = "";
 
         for (int i = 0; i < users.size(); i++) {
+            newUsers += '\n';
             newUsers += users.get(i);
         }
 
