@@ -100,11 +100,11 @@ public class FileUserDataAccessObject implements SignupUserDataAccessInterface, 
 
     @Override
     public void clearUsers() {
-
+        accounts.clear();
     }
 
     @Override
     public ArrayList<String> getClearedUsers() {
-        return null;
+        return new ArrayList<>(accounts.keySet());
     }
 }
